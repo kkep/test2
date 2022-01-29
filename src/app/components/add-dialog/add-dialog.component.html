@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Новый документ</h1>
+<div mat-dialog-content>
+  <form #dialogForm [formGroup]="formGroup">
+
+    <mat-form-field appearance="fill" >
+      <mat-label>Название документа</mat-label>
+      <input matInput formControlName="docName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select formControlName="docType" required>
+        <mat-option [value]="DocType.REQUEST">Заявление</mat-option>
+        <mat-option [value]="DocType.CERTIFICATE">Справка</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Адрес</mat-label>
+      <input matInput formControlName="address" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" formGroupName="author">
+      <mat-label>ФИО автора</mat-label>
+      <input matInput formControlName="fio" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" formGroupName="author">
+      <mat-label>Должность автора</mat-label>
+      <input matInput formControlName="post" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" formGroupName="author">
+      <mat-label>Аккаунт автора</mat-label>
+      <input matInput formControlName="account" required>
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="isSpecial">Срочный</mat-slide-toggle>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Закрыть</button>
+  <button mat-button [mat-dialog-close]="formGroup.value" cdkFocusInitial>Добавить</button>
+</div>
