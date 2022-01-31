@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit{
 
   sortState: Sort | undefined;
 
-  displayedColumns: string[] = ['docName', 'docCode', 'docDate', 'docType', 'status', 'author.fio', 'author.post'];
+  displayedColumns: string[] = ['position', 'docName', 'docCode', 'isSpecial', 'docDate', 'docType', 'status', 'author.fio', 'author.post'];
   dataSource: MatTableDataSource<IDocument> = new MatTableDataSource();
 
   private subscription: Subscription | null = null;
@@ -65,7 +65,7 @@ export class AppComponent implements AfterViewInit{
       .afterClosed().subscribe(result => {
         if (result) {
           this.appService.saveDocument(result).subscribe((doc: IDocument) => {
-            this.paginatorOptions.length++;
+            this.getData(this.paginator, this.sortState);
           });
         }
       });

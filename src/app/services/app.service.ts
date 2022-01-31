@@ -40,6 +40,10 @@ export class AppService{
         })
       }
 
+      data.forEach((el, index) => {
+        el.position = index+1;
+      })
+
       const response = {
         data: data.slice(page.pageIndex, page.pageIndex + page.pageSize),
         total: this.serverData.length

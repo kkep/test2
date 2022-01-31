@@ -3,6 +3,7 @@ import {DocType} from "../enums/doc-type";
 import {DocStatus} from "../enums/doc-status";
 
 export interface IDocument {
+  position: number;
   id: string;
   author: IAuthor;
   docCode: string;

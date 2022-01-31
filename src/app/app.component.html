@@ -1,5 +1,10 @@
 <div>
   <table mat-table #table [dataSource]="dataSource" aria-sort="none" matSort (matSortChange)="setSort($event)" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="position" sticky>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>№</th>
+      <td mat-cell *matCellDef="let element">{{element.position}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="docName" sticky>
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Наименование документа</th>
       <td mat-cell *matCellDef="let element">{{element.docName}}</td>
@@ -8,6 +13,11 @@
     <ng-container matColumnDef="docCode">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Код документа</th>
       <td mat-cell *matCellDef="let element">{{element.docCode}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="isSpecial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Срочный</th>
+      <td mat-cell *matCellDef="let element">{{element.isSpecial ? 'Да' : 'Нет'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="docDate">
